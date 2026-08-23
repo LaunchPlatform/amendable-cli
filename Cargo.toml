@@ -1,0 +1,37 @@
+[package]
+name = "amendable-cli"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "Command line client for Amendable Git storage"
+license = "MIT"
+authors = ["Launch Platform LLC"]
+repository = "https://github.com/LaunchPlatform/amendable-cli"
+homepage = "https://amendable.io"
+documentation = "https://docs.amendable.io/cli/install/"
+keywords = ["amendable", "git", "cli"]
+categories = ["command-line-utilities"]
+readme = "README.md"
+
+[lib]
+name = "amendable_cli"
+path = "src/lib.rs"
+
+[[bin]]
+name = "amendable"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+hostname = "0.4"
+open = "5"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+[dev-dependencies]
+assert_cmd = "2"
+predicates = "3"
+tempfile = "3"
+tiny_http = "0.12"
