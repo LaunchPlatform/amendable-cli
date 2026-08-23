@@ -9,7 +9,7 @@ amendable repo create hello
 amendable repo clone hello
 ```
 
-Defaults are production (`https://api.amendable.io`). For staging:
+Defaults are production (`https://api.amendable.io`). Change hosts only when developing Amendable against the staging server:
 
 ```bash
 amendable login --staging
@@ -40,7 +40,7 @@ token = "..."
 username = "yourname"
 ```
 
-Override with `AMENDABLE_TOKEN`, `AMENDABLE_API_URL`, `AMENDABLE_APP_URL`, `AMENDABLE_USERNAME`, or `AMENDABLE_CONFIG`.
+Override with `AMENDABLE_TOKEN`, `AMENDABLE_USERNAME`, or `AMENDABLE_CONFIG`.
 
 ## Tests
 
