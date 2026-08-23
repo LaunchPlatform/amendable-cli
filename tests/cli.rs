@@ -244,6 +244,27 @@ fn missing_token_fails() {
 }
 
 #[test]
+fn help_omits_staging() {
+    Command::cargo_bin("amendable")
+        .expect("binary")
+        .arg("--help")
+        .assert()
+        .success()
+        .stdout(contains("--staging").not())
+        .stdout(contains("stage.amendable.io").not())
+        .stdout(contains("stage.api.amendable.io").not());
+}
+
+#[test]
+fn hidden_staging_flag_is_accepted() {
+    Command::cargo_bin("amendable")
+        .expect("binary")
+        .args(["--staging", "--help"])
+        .assert()
+        .success();
+}
+
+#[test]
 fn git_credential_get() {
     let server = MockApiServer::start();
     server.grant();

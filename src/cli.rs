@@ -22,8 +22,8 @@ use crate::error::Error;
     arg_required_else_help = true
 )]
 struct Cli {
-    /// Talk to stage.amendable.io (site, Git, and stage.api.amendable.io).
-    #[arg(long, global = true)]
+    /// Internal: talk to the Amendable staging server.
+    #[arg(long, global = true, hide = true)]
     staging: bool,
     #[command(subcommand)]
     command: Commands,
