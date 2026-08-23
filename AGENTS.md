@@ -10,11 +10,13 @@ Rust CLI (`amendable`) for the Amendable API.
 - Git password is the access token. There is no SSH.
 - Command name is `amendable`. Package name is `amendable-cli`.
 
-Staging is a config override, not a different command set:
+Staging is a config override for Amendable developers, not a different command set:
 
 - `amendable --staging` / `amendable login --staging`
 - `AMENDABLE_API_URL=https://stage.api.amendable.io`
 - `AMENDABLE_APP_URL=https://stage.amendable.io`
+
+Do not document those URL env vars in customer docs (`../amendable-docs`). Hardcode production hosts there.
 
 Config file: `~/.config/amendable/config.toml` (mode `0600`).
 
