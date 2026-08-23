@@ -32,8 +32,8 @@ impl Client {
         if auth {
             let token = self.token.as_deref().ok_or(Error::NotLoggedIn)?;
             headers.insert(
-                "access-token",
-                reqwest::header::HeaderValue::from_str(token)
+                reqwest::header::AUTHORIZATION,
+                reqwest::header::HeaderValue::from_str(&format!("Bearer {token}"))
                     .map_err(|err| Error::message(err.to_string()))?,
             );
         }

@@ -5,7 +5,7 @@ Rust CLI (`amendable`) for the Amendable API.
 ## Product facts (do not invent others)
 
 - Site + Git HTTPS: `https://amendable.io`
-- API: `https://api.amendable.io` header `access-token`
+- API: `https://api.amendable.io` header `Authorization: Bearer`
 - Clone: `https://amendable.io/r/<username>/<repo>.git`
 - Git password is the access token. There is no SSH.
 - Command name is `amendable`. Package name is `amendable-cli`.

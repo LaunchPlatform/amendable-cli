@@ -107,7 +107,7 @@ fn handle(state: &Arc<Mutex<MockState>>, mut request: Request) {
     let url = request.url().to_string();
     let (path, query) = split_url(&url);
     let method = request.method().clone();
-    let token = header_value(&request, "access-token");
+    let token = bearer_token(&request);
     let body = read_json(&mut request);
 
     let response = match method {
@@ -361,6 +361,20 @@ fn header_value(request: &Request, name: &str) -> Option<String> {
             None
         }
     })
+}
+
+fn bearer_token(request: &Request) -> Option<String> {
+    let value = header_value(request, "authorization")?;
+    let (scheme, credentials) = value.split_once(' ')?;
+    if !scheme.eq_ignore_ascii_case("bearer") {
+        return None;
+    }
+    let token = credentials.trim();
+    if token.is_empty() {
+        None
+    } else {
+        Some(token.to_string())
+    }
 }
 
 fn read_json(request: &mut Request) -> Value {
