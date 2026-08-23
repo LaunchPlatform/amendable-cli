@@ -16,7 +16,7 @@ Staging is a config override for Amendable developers, not a different command s
 - `AMENDABLE_API_URL=https://stage.api.amendable.io`
 - `AMENDABLE_APP_URL=https://stage.amendable.io`
 
-Do not document those URL env vars in customer docs (`../amendable-docs`). Hardcode production hosts there.
+`--staging` is hidden from `amendable --help`. Keep it that way. Do not put staging hostnames, `--staging`, or `AMENDABLE_API_URL` / `AMENDABLE_APP_URL` in `README.md` or customer docs (`../amendable-docs`). Hardcode production hosts there. Staging URLs stay in this file and in `src/config.rs`.
 
 Config file: `~/.config/amendable/config.toml` (mode `0600`).
 

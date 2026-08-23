@@ -9,14 +9,7 @@ amendable repo create hello
 amendable repo clone hello
 ```
 
-Defaults are production (`https://api.amendable.io`). Change hosts only when developing Amendable against the staging server:
-
-```bash
-amendable login --staging
-# or
-export AMENDABLE_API_URL=https://stage.api.amendable.io
-export AMENDABLE_APP_URL=https://stage.amendable.io
-```
+Talks to `https://api.amendable.io` by default.
 
 ## Install from a checkout
 
