@@ -33,3 +33,13 @@ cargo test
 cargo fmt --check
 cargo clippy --all-targets -- -D warnings
 ```
+
+## Releases
+
+Set `version` in `Cargo.toml`, commit on `master`, then push a matching `vMAJOR.MINOR.PATCH` tag (`git tag v0.1.0 && git push origin v0.1.0`). GitHub Actions creates the GitHub Release and uploads `amendable` archives:
+
+- Linux x86_64 and ARM64 (static musl)
+- macOS Apple Silicon and Intel
+- Windows x86_64
+
+The tag must point at a commit on `master` and must match `Cargo.toml`. Do not create the GitHub Release in the UI first; the workflow creates it from the tag.
