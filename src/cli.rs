@@ -90,7 +90,7 @@ enum Commands {
 
 #[derive(Subcommand)]
 enum RepoCommand {
-    /// List repositories the current token can see.
+    /// List repositories. Needs API_REPOS_READ (or API_REPOS_WRITE or ALL).
     List {
         #[arg(long)]
         json: bool,
@@ -110,7 +110,7 @@ enum RepoCommand {
         #[arg(long)]
         json: bool,
     },
-    /// Show one repository.
+    /// Show one repository. Needs API_REPOS_READ (or API_REPOS_WRITE or ALL).
     Get {
         /// NAME or owner/NAME.
         name: String,
