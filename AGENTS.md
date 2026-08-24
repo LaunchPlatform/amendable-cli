@@ -36,7 +36,7 @@ cargo clippy --all-targets -- -D warnings
 
 ## Releases
 
-Set `version` in `Cargo.toml`, commit on `master`, then push a matching `vMAJOR.MINOR.PATCH` tag (`git tag v0.1.0 && git push origin v0.1.0`). GitHub Actions creates the GitHub Release and uploads `amendable` archives:
+Set `version` in `Cargo.toml`, commit on `master`, then push a matching `MAJOR.MINOR.PATCH` tag (`git tag 0.1.0 && git push origin 0.1.0`). GitHub Actions creates the GitHub Release and uploads `amendable` archives:
 
 - Linux x86_64 and ARM64 (static musl)
 - macOS Apple Silicon and Intel
