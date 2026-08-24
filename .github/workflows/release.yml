@@ -57,7 +57,7 @@ jobs:
             os: windows-latest
     runs-on: ${{ matrix.os }}
     permissions:
-      contents: ${{ github.event_name == 'push' && 'write' || 'read' }}
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: taiki-e/upload-rust-binary-action@v1
