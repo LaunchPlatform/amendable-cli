@@ -30,7 +30,7 @@ Talks to `https://api.amendable.io` by default.
 
 ### Cargo
 
-Requires Rust 1.85+ ([rustup](https://rustup.rs/)).
+Requires Rust 1.88+ ([rustup](https://rustup.rs/)).
 
 ```bash
 cargo install --git https://github.com/LaunchPlatform/amendable-cli --locked
