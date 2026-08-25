@@ -2,7 +2,7 @@
 name = "amendable-cli"
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.85"
+rust-version = "1.88"
 description = "Command line client for Amendable Git storage"
 license = "MIT"
 authors = ["Launch Platform LLC"]
