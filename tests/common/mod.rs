@@ -254,6 +254,7 @@ fn do_post(
             "name": body.get("name"),
             "scope": body.get("scope"),
             "grants": body.get("grants"),
+            "allowed_branches": body.get("allowed_branches").cloned().unwrap_or(json!([])),
             "token": "NEWTOKENSHOWNONCE",
             "repositories": [],
         });

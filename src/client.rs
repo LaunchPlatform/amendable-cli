@@ -187,6 +187,7 @@ impl Client {
         scope: &str,
         grants: &[String],
         repository_ids: Option<&[String]>,
+        allowed_branches: Option<&[String]>,
     ) -> Result<Value, Error> {
         let mut body = serde_json::json!({
             "name": name,
@@ -195,6 +196,9 @@ impl Client {
         });
         if let Some(ids) = repository_ids.filter(|v| !v.is_empty()) {
             body["repository_ids"] = serde_json::json!(ids);
+        }
+        if let Some(branches) = allowed_branches.filter(|v| !v.is_empty()) {
+            body["allowed_branches"] = serde_json::json!(branches);
         }
         self.request(
             reqwest::Method::POST,

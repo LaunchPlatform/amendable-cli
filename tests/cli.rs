@@ -147,6 +147,22 @@ fn token_create_and_list() {
         .stdout(contains("NEWTOKENSHOWNONCE"));
     harness
         .cmd()
+        .args([
+            "token",
+            "create",
+            "--name",
+            "main-only",
+            "--grants",
+            "GIT_HTTP_WRITE",
+            "--branches",
+            "main,release/1.0",
+            "--json",
+        ])
+        .assert()
+        .success()
+        .stdout(contains("main").and(contains("release/1.0")));
+    harness
+        .cmd()
         .args(["token", "list", "--json"])
         .assert()
         .success()
