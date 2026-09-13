@@ -167,9 +167,10 @@ mod tests {
         env::remove_var("AMENDABLE_TOKEN");
         env::remove_var("AMENDABLE_USERNAME");
         let cfg = Config::load().unwrap();
+        assert_ne!(cfg.api_url, STAGING_API_URL);
+        assert_ne!(cfg.app_url, STAGING_APP_URL);
         assert_eq!(cfg.api_url, DEFAULT_API_URL);
         assert_eq!(cfg.app_url, DEFAULT_APP_URL);
-        assert_eq!(cfg.api_url, "https://api.amendable.io");
     }
 
     #[test]
