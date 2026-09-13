@@ -28,6 +28,12 @@ Keep the public command surface stable. Docs and examples call `amendable`, not 
 
 ## Tests
 
+Do not add tautological tests that only assert a default host, constant, or
+constructor dump equals the literal you just set. If changing an intended
+default requires updating the test, and the test never exercises behavior,
+omit it. Test env/file override, staging vs production selection, and CLI
+contracts instead.
+
 ```bash
 cargo test
 cargo fmt --check
