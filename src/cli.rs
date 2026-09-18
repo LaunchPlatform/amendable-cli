@@ -158,6 +158,9 @@ enum TokenCommand {
         /// Comma-separated repo UUIDs for SELECTED_REPO.
         #[arg(long)]
         repository_ids: Option<String>,
+        /// Comma-separated Amendable branch names this token may push. Empty means all branches.
+        #[arg(long)]
+        branches: Option<String>,
         #[arg(long)]
         json: bool,
     },
@@ -244,12 +247,14 @@ fn execute(cli: Cli) -> Result<(), Error> {
                 scope,
                 grants,
                 repository_ids,
+                branches,
                 json,
             } => token_create(
                 name.as_deref(),
                 &scope,
                 &grants,
                 repository_ids.as_deref(),
+                branches.as_deref(),
                 json,
             ),
             TokenCommand::Delete { token_id } => token_delete(&token_id),
@@ -559,13 +564,21 @@ fn token_create(
     scope: &str,
     grants: &str,
     repository_ids: Option<&str>,
+    branches: Option<&str>,
     json: bool,
 ) -> Result<(), Error> {
     let cfg = Config::load()?;
     let grant_list = split_csv(grants);
     let repo_ids = repository_ids.map(split_csv);
+    let allowed_branches = branches.map(split_csv);
     let client = Client::new(&cfg.api_url, Some(cfg.require_token()?))?;
-    let created = client.create_access_token(name, scope, &grant_list, repo_ids.as_deref())?;
+    let created = client.create_access_token(
+        name,
+        scope,
+        &grant_list,
+        repo_ids.as_deref(),
+        allowed_branches.as_deref(),
+    )?;
     if json {
         print_json(&created)?;
         return Ok(());
